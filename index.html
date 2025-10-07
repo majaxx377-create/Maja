@@ -22,46 +22,65 @@
       .btn:hover{color:#111827}
     }
 
-    /* 💫 Fade-in animation */
     @keyframes fadeIn {
       0% {opacity:0; transform:translateY(10px);}
       100% {opacity:1; transform:translateY(0);}
     }
 
+    @keyframes pulseGlow {
+      0% {box-shadow:0 0 15px rgba(255,90,173,0.4);}
+      50% {box-shadow:0 0 28px rgba(255,90,173,0.8);}
+      100% {box-shadow:0 0 15px rgba(255,90,173,0.4);}
+    }
+
     body{
-      margin:0; 
-      font-family:Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif; 
+      margin:0;
+      font-family:Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background: linear-gradient(135deg,var(--bg1) 0%, #1E1B4B 55%, var(--bg2) 100%);
-      min-height:100vh; 
-      display:flex; 
-      flex-direction:column; 
-      align-items:center; 
-      padding:24px 16px;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:32px 16px;
       animation:fadeIn 1.2s ease-out;
     }
 
-    .container{ 
-      width:min(520px,92vw); 
-      text-align:center; 
-      position:relative; 
-      margin-top:24px; 
-      flex:1; 
-      display:grid; 
-      place-items:center; 
+    .container{
+      width:min(520px,92vw);
+      text-align:center;
+      position:relative;
+      margin-top:16px;
+      flex:1;
+      display:grid;
+      place-items:center;
       animation:fadeIn 1.6s ease-out both;
     }
 
     .pfp{
-      width:188px; height:188px; border-radius:50%; object-fit:cover; object-position:50% 18%;
+      width:188px; height:188px;
+      border-radius:50%; object-fit:cover; object-position:50% 18%;
       border:4px solid rgba(255,255,255,.22);
       box-shadow: 0 10px 28px rgba(0,0,0,.35), 0 0 24px rgba(124,58,237,.28);
-      margin: 8px auto 22px; display:block;
+      margin: 8px auto 22px;
+      display:block;
       animation:fadeIn 1.8s ease-out both;
     }
 
-    .name{font-size:2em;font-weight:600;margin:12px 0;animation:fadeIn 2s ease-out both;}
-    #city{opacity:.9;margin-bottom:28px;animation:fadeIn 2.1s ease-out both;}
+    .name{
+      font-size:2em;
+      font-weight:600;
+      margin:12px 0;
+      animation:fadeIn 2s ease-out both;
+      text-shadow: 0 0 8px rgba(255,255,255,0.35); /* ✨ mjuk textskugga */
+    }
+
+    #city{
+      opacity:.9;
+      margin-bottom:28px;
+      animation:fadeIn 2.1s ease-out both;
+    }
 
     .buttons{
       display:flex;
@@ -73,84 +92,51 @@
     }
 
     .btn{
-      display:flex;align-items:center;justify-content:center;position:relative;
-      font-size:18px;font-weight:600;text-decoration:none;
-      padding:16px 24px;border-radius:48px;transition:.3s;overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:600;
+      text-decoration:none;
+      padding:16px 24px;
+      border-radius:48px;
+      transition:.3s;
       color:var(--text);
     }
 
     .btn span.label{z-index:2}
-    .btn .ico{position:absolute;left:20px;width:26px;height:26px;z-index:2}
 
     .btn.fansly{background:linear-gradient(135deg,#38bdf8,#0ea5e9)}
     .btn.instagram{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}
+
     .btn.fanvue{
       background:linear-gradient(135deg,#ff5aad,#a855f7);
       color:#fff;
-      box-shadow:0 0 18px rgba(255,90,173,0.6);
       position:relative;
       overflow:hidden;
     }
 
-    /* ✨ Sparkle animation for Fanvue button */
-    .btn.fanvue::after {
-      content:"";
-      position:absolute;
-      top:-50%;
-      left:-50%;
-      width:200%;
-      height:200%;
-      background:radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, transparent 70%);
-      opacity:0.4;
-      animation:sparkle 3.5s infinite linear;
-      z-index:1;
-      pointer-events:none;
-    }
-
-    @keyframes sparkle {
-      0% {transform:translate(-10%, -10%) rotate(0deg); opacity:0.4;}
-      50% {transform:translate(10%, 10%) rotate(180deg); opacity:0.7;}
-      100% {transform:translate(-10%, -10%) rotate(360deg); opacity:0.4;}
-    }
-
-    /* Tooltip styling */
-    .tooltip {
-      position:absolute;
-      bottom:-28px;
-      left:50%;
-      transform:translateX(-50%);
-      background:rgba(255,255,255,0.15);
-      color:#fff;
-      font-size:0.85em;
-      padding:4px 10px;
-      border-radius:10px;
-      opacity:0;
-      transition:opacity .3s ease, transform .3s ease;
-      pointer-events:none;
-      white-space:nowrap;
-      backdrop-filter:blur(4px);
-    }
-
-    .btn.fanvue:hover .tooltip {
-      opacity:1;
-      transform:translateX(-50%) translateY(-4px);
-    }
-
     .btn.fanvue:hover{
       transform:translateY(-2px);
-      filter:brightness(1.15);
-      box-shadow:0 0 28px rgba(255,90,173,0.8);
+      filter:brightness(1.1);
+      animation:pulseGlow 1.8s infinite; /* 🌙 glow-effekt */
     }
 
     .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
 
-    small{display:block;margin-top:28px;opacity:.85;font-size:.9em;animation:fadeIn 2.4s ease-out both;}
+    small{
+      display:block;
+      margin-top:28px;
+      opacity:.85;
+      font-size:.9em;
+      animation:fadeIn 2.4s ease-out both;
+    }
 
     .footer{
-      margin-top:auto; 
-      font-size:12px; 
-      color:#E5E7EB; 
-      padding:28px 0 8px; 
+      margin-top:auto;
+      font-size:12px;
+      color:#E5E7EB;
+      padding:28px 0 8px;
       text-align:center;
       animation:fadeIn 2.6s ease-out both;
     }
@@ -159,10 +145,9 @@
       body{padding:48px 32px}
       .container{width:min(760px,88vw);}
       .pfp{width:208px; height:208px; border-width:3px; margin-bottom:26px}
-      .buttons{gap:20px; width:min(440px,80vw)}
+      .buttons{gap:22px; width:min(440px,80vw)}
       .btn{font-size:20px; padding:18px 26px}
-      .btn .ico{left:22px}
-      .btn span.label{margin-left:26px}
+      small{margin-top:36px;}
     }
   </style>
 </head>
@@ -174,17 +159,13 @@
 
     <nav class="buttons">
       <a class="btn fansly" href="https://fansly.com/Maja_sin1" target="_blank" rel="noopener">
-        <img class="ico" src="https://cdn.worldvectorlogo.com/logos/fansly.svg" alt="">
         <span class="label">Fansly</span>
       </a>
       <a class="btn instagram" href="https://www.instagram.com/maja.s.06" target="_blank" rel="noopener">
-        <img class="ico" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="">
         <span class="label">Instagram</span>
       </a>
-      <a class="btn fanvue" href="https://www.fanvue.com/maj_sin1" target="_blank" rel="noopener">
-        <img class="ico" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Emoji_u1f381.svg" alt="">
+      <a class="btn fanvue" href="https://www.fanvue.com/maja_sin1" target="_blank" rel="noopener">
         <span class="label">Överraskning 🤭</span>
-        <span class="tooltip">💫 psst… du vill klicka här 🤫</span>
       </a>
     </nav>
 
