@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Maja — majasin.se</title>
 
-  <!-- Favicon & Social preview -->
   <link rel="icon" type="image/png" href="profile.jpg" />
   <meta name="description" content="💋 Discover Maja — Private content & little surprises just for you 🤭" />
   <meta property="og:title" content="Maja — majasin.se" />
@@ -25,12 +24,13 @@
       .btn:hover{color:#111827}
     }
 
-    /* Fade-in */
     @keyframes fadeIn { 0%{opacity:0;transform:translateY(10px)} 100%{opacity:1;transform:translateY(0)} }
 
     body{
-      margin:0; font-family:Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--text);
-      background: linear-gradient(135deg,var(--bg1) 0%, #1E1B4B 55%, var(--bg2) 100%);
+      margin:0;
+      font-family:Poppins,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:linear-gradient(135deg,var(--bg1) 0%, #1E1B4B 55%, var(--bg2) 100%);
       min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
       padding:28px 14px; animation:fadeIn 1.1s ease-out;
     }
@@ -40,46 +40,35 @@
       display:grid; place-items:center; animation:fadeIn 1.4s ease-out both;
     }
 
-    /* Profilbild + hover glitter */
     .pfp{
       width:188px; height:188px; border-radius:50%; object-fit:cover; object-position:50% 18%;
       border:4px solid rgba(255,255,255,.22);
-      box-shadow: 0 10px 26px rgba(0,0,0,.34), 0 0 22px rgba(124,58,237,.26);
-      margin:6px auto 22px; display:block; animation:fadeIn 1.6s ease-out both; 
-      position:relative; overflow:hidden;
-      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow:0 10px 26px rgba(0,0,0,.34), 0 0 22px rgba(124,58,237,.26);
+      margin:6px auto 18px; display:block; animation:fadeIn 1.6s ease-out both;
+      transition:transform .25s ease, box-shadow .25s ease;
     }
-    .pfp::after{
-      content:""; position:absolute; inset:-20%; pointer-events:none; opacity:0;
-      background:
-        radial-gradient(60px 60px at 30% 30%, rgba(255,255,255,.22), transparent 60%),
-        radial-gradient(80px 80px at 70% 70%, rgba(255,255,255,.16), transparent 60%);
-      transition: opacity .25s ease;
-    }
-    .pfp:hover{ transform:translateY(-2px) scale(1.01); box-shadow: 0 14px 32px rgba(0,0,0,.4), 0 0 26px rgba(124,58,237,.32); }
-    .pfp:hover::after{ opacity:1; }
+    .pfp:hover{ transform:translateY(-2px) scale(1.01); box-shadow:0 14px 32px rgba(0,0,0,.4), 0 0 26px rgba(124,58,237,.32); }
 
-    .name{
-      font-size:2em; font-weight:600;
-      margin:0 0 4px;              /* mindre gap ner mot city */
-      text-shadow:0 0 8px rgba(255,255,255,.32);
-    }
-    #city{opacity:.9;margin:0 0 18px;}  /* lite tajtare */
+    .name{font-size:2em;font-weight:600;margin:0 0 4px;text-shadow:0 0 8px rgba(255,255,255,.32);}
+    #city{opacity:.9;margin:0 0 18px;}
 
     .buttons{
-      display:flex; flex-direction:column; gap:16px;
-      width:min(360px,85vw); margin:0 auto; animation:fadeIn 1.8s ease-out both;
+      display:flex;flex-direction:column;gap:16px;
+      width:min(360px,85vw);margin:0 auto;animation:fadeIn 1.8s ease-out both;
     }
 
     .btn{
-      display:flex; align-items:center; justify-content:center; position:relative;
-      font-size:18px; font-weight:600; text-decoration:none;
-      padding:15px 22px; border-radius:48px; transition:.28s; overflow:hidden; color:var(--text);
+      display:flex;align-items:center;justify-content:center;position:relative;
+      font-size:18px;font-weight:600;text-decoration:none;
+      padding:15px 22px;border-radius:48px;transition:.28s;overflow:hidden;color:var(--text);
+      backdrop-filter:blur(10px) saturate(1.3);
+      -webkit-backdrop-filter:blur(10px) saturate(1.3);
+      border:1px solid rgba(255,255,255,.25);
     }
-    .btn:hover{transform:translateY(-2px); filter:brightness(1.08)}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
     .btn span.label{z-index:2}
     .btn .ico{
-      position:absolute; left:18px; width:26px; height:26px; z-index:2;
+      position:absolute;left:18px;width:26px;height:26px;z-index:2;
       filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))
     }
 
@@ -87,37 +76,35 @@
     .btn.fansly{background:linear-gradient(135deg,#38bdf8,#0ea5e9)}
     .btn.instagram{background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)}
 
-    /* Överraskning — clean glass (rosa→lila) + konstant mild shine */
+    /* Överraskning – glassblur + soft shine */
     .btn.fanvue{
       background:linear-gradient(135deg,#ff5aad 0%, #a855f7 100%);
-      color:#fff; position:relative; overflow:hidden;
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 8px 20px rgba(0,0,0,.24);
-      backdrop-filter: saturate(1.05);
+      color:#fff;position:relative;overflow:hidden;
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow:0 8px 20px rgba(0,0,0,.24);
+      backdrop-filter:blur(12px) saturate(1.4);
+      -webkit-backdrop-filter:blur(12px) saturate(1.4);
     }
-    /* kontinuerlig, mjuk shine (inte hover) */
-    @keyframes sweep {
-      0%   { transform:rotate(18deg) translateX(-150%); }
-      100% { transform:rotate(18deg) translateX(250%); }
+
+    @keyframes shine {
+      0%{transform:translateX(-150%) rotate(25deg);}
+      100%{transform:translateX(250%) rotate(25deg);}
     }
     .btn.fanvue::before{
-      content:""; position:absolute; top:-120%; left:-30%;
-      width:60%; height:340%;
-      background:linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.20) 50%, rgba(255,255,255,0) 100%);
-      animation:sweep 3.6s linear infinite;
-      opacity:.75; will-change:transform;
+      content:"";position:absolute;top:-120%;left:-30%;
+      width:60%;height:340%;
+      background:linear-gradient(115deg,rgba(255,255,255,0)0%,rgba(255,255,255,.22)50%,rgba(255,255,255,0)100%);
+      animation:shine 3.5s linear infinite;
+      opacity:.8;
     }
 
     small{display:block;margin-top:22px;opacity:.85;font-size:.9em;animation:fadeIn 2s ease-out both;}
     .footer{margin-top:auto;font-size:12px;color:#E5E7EB;padding:24px 0 6px;text-align:center;animation:fadeIn 2.2s ease-out both;}
 
-    /* Desktop finjusteringar */
     @media (min-width:980px){
       body{padding:42px 28px}
       .container{width:min(760px,88vw)}
-      .pfp{width:206px;height:206px;border-width:3px;margin-bottom:20px}
-      .name{margin-bottom:6px}
-      #city{margin-bottom:20px}
+      .pfp{width:206px;height:206px;margin-bottom:20px}
       .buttons{gap:18px;width:min(440px,80vw)}
       .btn{font-size:20px;padding:17px 24px}
       .btn .ico{left:20px}
